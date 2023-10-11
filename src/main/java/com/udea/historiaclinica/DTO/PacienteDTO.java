@@ -13,7 +13,6 @@ public class PacienteDTO {
     private List<HistoriaPaciente> historiaClinica;
 
 
-
     public String getCedula() {
         return cedula;
     }

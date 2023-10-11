@@ -29,7 +29,7 @@ public class PacienteController {
     public ResponseEntity<PacienteDTO> findPacienteByCedula(@PathVariable String cedula){
         var paciente = pacienteService.findPacienteByCedula(cedula);
         var historiaPaciente = historiaPacienteService.findAllHistoriaPaciente(cedula);
-
+        
         PacienteDTO pacienteDTO = new PacienteDTO();
         pacienteDTO.setCedula(paciente.getCedula());
         pacienteDTO.setNombre(paciente.getNombre());
@@ -52,6 +52,5 @@ public class PacienteController {
         historiaPaciente.setValoracion(nuevaHistoriaPacienteDTO.getValoracion());
 
         historiaPacienteService.guardarHistoriaPaciente(historiaPaciente);
-
     }
 }

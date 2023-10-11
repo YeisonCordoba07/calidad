@@ -8,9 +8,7 @@ public class HistoriaPacienteDTO {
     private String fecha;
     private String valoracion;
 
-    public HistoriaPacienteDTO() {
 
-    }
     public String getIdHistoriaPaciente() {
         return idHistoriaPaciente;
     }
