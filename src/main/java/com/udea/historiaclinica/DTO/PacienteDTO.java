@@ -1,4 +1,4 @@
-package com.udea.historiaclinica.DTO;
+package com.udea.historiaclinica.dto;
 
 import com.udea.historiaclinica.model.HistoriaPaciente;
 

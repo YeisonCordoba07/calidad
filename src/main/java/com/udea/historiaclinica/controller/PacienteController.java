@@ -1,6 +1,7 @@
 package com.udea.historiaclinica.controller;
 
-import com.udea.historiaclinica.DTO.PacienteDTO;
+import com.udea.historiaclinica.dto.HistoriaPacienteDTO;
+import com.udea.historiaclinica.dto.PacienteDTO;
 import com.udea.historiaclinica.model.HistoriaPaciente;
 import com.udea.historiaclinica.service.HistoriaPacienteService;
 import com.udea.historiaclinica.service.PacienteService;
@@ -23,6 +24,7 @@ public class PacienteController {
         this.historiaPacienteService = historiaPacienteService;
     }
 
+    //http://localhost:8080/paciente/get-paciente/22222222
     @GetMapping("/get-paciente/{cedula}")
     public ResponseEntity<PacienteDTO> findPacienteByCedula(@PathVariable String cedula){
         var paciente = pacienteService.findPacienteByCedula(cedula);
@@ -39,7 +41,17 @@ public class PacienteController {
 
 
     @PostMapping("/guardar-historia-paciente")
-    public void guardarHistoriaPaciente(@RequestBody HistoriaPaciente historiaPaciente){
-       historiaPacienteService.guardarHistoriaPaciente(historiaPaciente);
+    public void guardarHistoriaPaciente(@RequestBody HistoriaPacienteDTO nuevaHistoriaPacienteDTO){
+
+        HistoriaPaciente historiaPaciente = new HistoriaPaciente();
+
+        historiaPaciente.setCedulaPaciente(nuevaHistoriaPacienteDTO.getCedulaPaciente());
+        historiaPaciente.setIdHistoriaPaciente(nuevaHistoriaPacienteDTO.getIdHistoriaPaciente());
+        historiaPaciente.setCedulaDoctor(nuevaHistoriaPacienteDTO.getCedulaDoctor());
+        historiaPaciente.setFecha(nuevaHistoriaPacienteDTO.getFecha());
+        historiaPaciente.setValoracion(nuevaHistoriaPacienteDTO.getValoracion());
+
+        historiaPacienteService.guardarHistoriaPaciente(historiaPaciente);
+
     }
 }
