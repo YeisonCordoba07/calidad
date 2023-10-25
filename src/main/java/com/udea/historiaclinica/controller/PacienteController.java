@@ -3,6 +3,7 @@ package com.udea.historiaclinica.controller;
 import com.udea.historiaclinica.dto.HistoriaPacienteDTO;
 import com.udea.historiaclinica.dto.PacienteDTO;
 import com.udea.historiaclinica.model.HistoriaPaciente;
+import com.udea.historiaclinica.model.Paciente;
 import com.udea.historiaclinica.service.HistoriaPacienteService;
 import com.udea.historiaclinica.service.PacienteService;
 import lombok.var;
@@ -27,15 +28,13 @@ public class PacienteController {
     //http://localhost:8080/paciente/get-paciente/22222222
     @GetMapping("/get-paciente/{cedula}")
     public ResponseEntity<PacienteDTO> findPacienteByCedula(@PathVariable String cedula){
-        var paciente = pacienteService.findPacienteByCedula(cedula);
-        var historiaPaciente = historiaPacienteService.findAllHistoriaPaciente(cedula);
-
+        Paciente paciente = pacienteService.findPacienteByCedula(cedula);
         PacienteDTO pacienteDTO = new PacienteDTO();
         pacienteDTO.setCedula(paciente.getCedula());
         pacienteDTO.setNombre(paciente.getNombre());
         pacienteDTO.setApellido(paciente.getApellido());
         pacienteDTO.setCorreo(paciente.getCorreo());
-        pacienteDTO.setHistoriaClinica(historiaPaciente);
+        pacienteDTO.setHistoriaClinica(historiaPacienteService.findAllHistoriaPaciente(cedula));
         return ResponseEntity.ok(pacienteDTO);
     }
 
