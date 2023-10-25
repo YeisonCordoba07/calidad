@@ -6,7 +6,6 @@ import com.udea.historiaclinica.model.HistoriaPaciente;
 import com.udea.historiaclinica.model.Paciente;
 import com.udea.historiaclinica.service.HistoriaPacienteService;
 import com.udea.historiaclinica.service.PacienteService;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
